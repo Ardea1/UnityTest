@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Алгоритм Дейкстры
+/// РђР»РіРѕСЂРёС‚Рј Р”РµР№РєСЃС‚СЂС‹
 /// </summary>
 public class Dijkstra : MonoBehaviour
 {
@@ -12,33 +12,33 @@ public class Dijkstra : MonoBehaviour
     List<GraphVertexInfo> infos;
 
     /// <summary>
-    /// Конструктор
+    /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     /// </summary>
-    /// <param name="graph">Граф</param>
+    /// <param name="graph">Р“СЂР°С„</param>
     public Dijkstra(Graph graph)
     {
         this.graph = graph;
     }
 
     /// <summary>
-    /// Инициализация информации
+    /// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РёРЅС„РѕСЂРјР°С†РёРё
     /// </summary>
     void InitInfo()
     {
         infos = new List<GraphVertexInfo>();
-        //  graph.Vertices - Список вершин графа
+        //  graph.Vertices - РЎРїРёСЃРѕРє РІРµСЂС€РёРЅ РіСЂР°С„Р°
         foreach (var v in graph.Vertices)
         {
-            // Добавляем новую вершину.
+            // Р”РѕР±Р°РІР»СЏРµРј РЅРѕРІСѓСЋ РІРµСЂС€РёРЅСѓ.
             infos.Add(new GraphVertexInfo(v));
         }
     }
 
     /// <summary>
-    /// Получение информации о вершине графа
+    /// РџРѕР»СѓС‡РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РІРµСЂС€РёРЅРµ РіСЂР°С„Р°
     /// </summary>
-    /// <param name="v">Вершина</param>
-    /// <returns>Информация о вершине</returns>
+    /// <param name="v">Р’РµСЂС€РёРЅР°</param>
+    /// <returns>РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РІРµСЂС€РёРЅРµ</returns>
     GraphVertexInfo GetVertexInfo(GraphVertex v)
     {
         foreach (var i in infos)
@@ -53,9 +53,9 @@ public class Dijkstra : MonoBehaviour
     }
 
     /// <summary>
-    /// Поиск непосещенной вершины с минимальным значением суммы
+    /// РџРѕРёСЃРє РЅРµРїРѕСЃРµС‰РµРЅРЅРѕР№ РІРµСЂС€РёРЅС‹ СЃ РјРёРЅРёРјР°Р»СЊРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј СЃСѓРјРјС‹
     /// </summary>
-    /// <returns>Информация о вершине</returns>
+    /// <returns>РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РІРµСЂС€РёРЅРµ</returns>
     public GraphVertexInfo FindUnvisitedVertexWithMinSum()
     {
         var minValue = int.MaxValue;
@@ -73,22 +73,22 @@ public class Dijkstra : MonoBehaviour
     }
 
     /// <summary>
-    /// Поиск кратчайшего пути по названиям вершин
+    /// РџРѕРёСЃРє РєСЂР°С‚С‡Р°Р№С€РµРіРѕ РїСѓС‚Рё РїРѕ РЅР°Р·РІР°РЅРёСЏРј РІРµСЂС€РёРЅ
     /// </summary>
-    /// <param name="startName">Название стартовой вершины</param>
-    /// <param name="finishName">Название финишной вершины</param>
-    /// <returns>Кратчайший путь</returns>
+    /// <param name="startName">РќР°Р·РІР°РЅРёРµ СЃС‚Р°СЂС‚РѕРІРѕР№ РІРµСЂС€РёРЅС‹</param>
+    /// <param name="finishName">РќР°Р·РІР°РЅРёРµ С„РёРЅРёС€РЅРѕР№ РІРµСЂС€РёРЅС‹</param>
+    /// <returns>РљСЂР°С‚С‡Р°Р№С€РёР№ РїСѓС‚СЊ</returns>
     public string FindShortestPath(string startName, string finishName)
     {
         return FindShortestPath(graph.FindVertex(startName), graph.FindVertex(finishName));
     }
 
     /// <summary>
-    /// Поиск кратчайшего пути по вершинам
+    /// РџРѕРёСЃРє РєСЂР°С‚С‡Р°Р№С€РµРіРѕ РїСѓС‚Рё РїРѕ РІРµСЂС€РёРЅР°Рј
     /// </summary>
-    /// <param name="startVertex">Стартовая вершина</param>
-    /// <param name="finishVertex">Финишная вершина</param>
-    /// <returns>Кратчайший путь</returns>
+    /// <param name="startVertex">РЎС‚Р°СЂС‚РѕРІР°СЏ РІРµСЂС€РёРЅР°</param>
+    /// <param name="finishVertex">Р¤РёРЅРёС€РЅР°СЏ РІРµСЂС€РёРЅР°</param>
+    /// <returns>РљСЂР°С‚С‡Р°Р№С€РёР№ РїСѓС‚СЊ</returns>
     public string FindShortestPath(GraphVertex startVertex, GraphVertex finishVertex)
     {
         InitInfo();
@@ -109,9 +109,9 @@ public class Dijkstra : MonoBehaviour
     }
 
     /// <summary>
-    /// Вычисление суммы весов ребер для следующей вершины
+    /// Р’С‹С‡РёСЃР»РµРЅРёРµ СЃСѓРјРјС‹ РІРµСЃРѕРІ СЂРµР±РµСЂ РґР»СЏ СЃР»РµРґСѓСЋС‰РµР№ РІРµСЂС€РёРЅС‹
     /// </summary>
-    /// <param name="info">Информация о текущей вершине</param>
+    /// <param name="info">РРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚РµРєСѓС‰РµР№ РІРµСЂС€РёРЅРµ</param>
     void SetSumToNextVertex(GraphVertexInfo info)
     {
         info.IsUnvisited = false;
@@ -128,11 +128,11 @@ public class Dijkstra : MonoBehaviour
     }
 
     /// <summary>
-    /// Формирование пути
+    /// Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ РїСѓС‚Рё
     /// </summary>
-    /// <param name="startVertex">Начальная вершина</param>
-    /// <param name="endVertex">Конечная вершина</param>
-    /// <returns>Путь</returns>
+    /// <param name="startVertex">РќР°С‡Р°Р»СЊРЅР°СЏ РІРµСЂС€РёРЅР°</param>
+    /// <param name="endVertex">РљРѕРЅРµС‡РЅР°СЏ РІРµСЂС€РёРЅР°</param>
+    /// <returns>РџСѓС‚СЊ</returns>
     string GetPath(GraphVertex startVertex, GraphVertex endVertex)
     {
         var path = endVertex.ToString();
