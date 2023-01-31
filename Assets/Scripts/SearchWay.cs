@@ -62,7 +62,7 @@ public class SearchWay : MonoBehaviour
 
         var g = new Graph();
 
-        //добавление вершин
+        //РґРѕР±Р°РІР»РµРЅРёРµ РІРµСЂС€РёРЅ
         g.AddVertex("Sphere1");
         g.AddVertex("Sphere2");
         g.AddVertex("Sphere3");
@@ -70,7 +70,7 @@ public class SearchWay : MonoBehaviour
         g.AddVertex("Sphere5");
         g.AddVertex("Sphere6");
 
-        //добавление ребер
+        //РґРѕР±Р°РІР»РµРЅРёРµ СЂРµР±РµСЂ
         g.AddEdge("Sphere1", "Sphere2", Convert.ToInt32(Vector3.Distance(sphere1Position, sphere2Position)));
         g.AddEdge("Sphere2", "Sphere6", Convert.ToInt32(Vector3.Distance(sphere2Position, sphere6Position)));
         g.AddEdge("Sphere2", "Sphere3", Convert.ToInt32(Vector3.Distance(sphere2Position, sphere3Position)));
@@ -91,26 +91,26 @@ public class SearchWay : MonoBehaviour
     {
         cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
-        // Помещаем куб посередине (между двух точек (в нашем случае, двух сфер)).
+        // РџРѕРјРµС‰Р°РµРј РєСѓР± РїРѕСЃРµСЂРµРґРёРЅРµ (РјРµР¶РґСѓ РґРІСѓС… С‚РѕС‡РµРє (РІ РЅР°С€РµРј СЃР»СѓС‡Р°Рµ, РґРІСѓС… СЃС„РµСЂ)).
         cube.transform.position = (pointEnd + pointStart) / 2.0F;
 
-        // Рассчитываем нормализованный вектор.
-        /* Vector3.Normalize — Возвращает вектор с тем же направлением, 
-         * что и заданный вектор, но с длиной равной единице. */
+        // Р Р°СЃСЃС‡РёС‚С‹РІР°РµРј РЅРѕСЂРјР°Р»РёР·РѕРІР°РЅРЅС‹Р№ РІРµРєС‚РѕСЂ.
+        /* Vector3.Normalize вЂ” Р’РѕР·РІСЂР°С‰Р°РµС‚ РІРµРєС‚РѕСЂ СЃ С‚РµРј Р¶Рµ РЅР°РїСЂР°РІР»РµРЅРёРµРј, 
+         * С‡С‚Рѕ Рё Р·Р°РґР°РЅРЅС‹Р№ РІРµРєС‚РѕСЂ, РЅРѕ СЃ РґР»РёРЅРѕР№ СЂР°РІРЅРѕР№ РµРґРёРЅРёС†Рµ. */
         directionV = Vector3.Normalize(pointEnd - pointStart);
 
-        // Ось вращения.
+        // РћСЃСЊ РІСЂР°С‰РµРЅРёСЏ.
         rotationAxisV = directionV + cylDefaultOrientation;
 
         rotationAxisV = Vector3.Normalize(rotationAxisV);
 
-        // Находим угол поворота.
+        // РќР°С…РѕРґРёРј СѓРіРѕР» РїРѕРІРѕСЂРѕС‚Р°.
         cube.transform.rotation = new Quaternion(rotationAxisV.x, rotationAxisV.y, rotationAxisV.z, 0);
 
         // Scale        
         dist = Vector3.Distance(pointEnd, pointStart);
 
-        // Задаём размер кубу.
+        // Р—Р°РґР°С‘Рј СЂР°Р·РјРµСЂ РєСѓР±Сѓ.
         cube.transform.localScale = new Vector3(0.5f, dist, 0.5f);
     }
 }
